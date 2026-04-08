@@ -18,7 +18,7 @@
 //Import da dependencia para criar API
 const express = require('express')
 const cors = require('cors')
-const funcoes = require('./modulo/funcao')
+const funcoes = require('./modulo/funcoes')
 
 // Inicializa uma nova aplicação Express
 const app = express()
