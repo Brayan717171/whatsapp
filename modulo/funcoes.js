@@ -71,29 +71,27 @@ const getListaDadosPessoaisConversas = function(numero){
 
 }
 
-const getListaDadosUsuarioContato = function(numero, nome){
+const getListaDadosUsuarioContato = function(numero, nome) {
     let listaNumero = contatos["whats-users"];
-    
-    let resultado = false
-   listaNumero.forEach(function(usuario){
+    let resultado = false;
 
-    if(usuario.number === numero || usuario.contacts === nome){
-        resultado = usuario.contacts.map(function(contato) {
-            return {
-                usuario: usuario.nickname,
-                numero: usuario.number,
-                contato: contato.name,
-                conversas: contato.messages
-            }
-          });
-    }
+    listaNumero.forEach(function(usuario) {
+        if (usuario.number === numero) {                  
+            usuario.contacts.forEach(function(contato) {
+                if (contato.name === nome) {                
+                    resultado = {
+                        usuario: usuario.nickname,
+                        numero: usuario.number,
+                        contato: contato.name,
+                        conversas: contato.messages
+                    };
+                }
+            });
+        }
+    });
 
-   })
-    return resultado
-  
-
-}
-
+    return resultado;
+};
 const getFiltroPalavraChave = function(palavra, numero, nomeContato) {
     let listaNumero = contatos["whats-users"];
     
@@ -136,17 +134,17 @@ const getFiltroPalavraChave = function(palavra, numero, nomeContato) {
 
 //console.log(getListaDeContaUsuario('11987876567'))
 
-//console.log(getlistaDadosPessoais('11987876567'))
+//console.log(getListaDadosPessoaisConversas('11987876567'))
 
-//console.log(getlistaDadosPessoaisConversas('11966578996'))
+//console.log(getListaDadosUsuarioContato('11987876567', "John Doe"))
 
 //console.log(getFiltroPalavraChave("o", "11987876567", "John Doe"))
 
 module.exports = {
     getListaDeContatos,        
     getListaDeContaUsuario,    
-    getlistaDadosPessoais: getListaDadosPessoais,
-    getlistaDadosPessoaisConversas: getListaDadosPessoaisConversas,
-    getlistaDadosUsuarioContato: getListaDadosUsuarioContato,
+    getListaDadosPessoais,
+    getListaDadosPessoaisConversas,
+    getListaDadosUsuarioContato,
     getFiltroPalavraChave
-}
+};
