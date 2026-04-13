@@ -31,7 +31,7 @@ const getListaDeContaUsuario = function(numero){
 
 }
 
-const getlistaDadosPessoais = function(numero){
+const getListaDadosPessoais = function(numero){
     let listaNumero = contatos["whats-users"];
     
     let resultado = false
@@ -53,7 +53,7 @@ const getlistaDadosPessoais = function(numero){
 
 }
 
-const getlistaDadosPessoaisConversas = function(numero){
+const getListaDadosPessoaisConversas = function(numero){
     let listaNumero = contatos["whats-users"];
     
     let resultado = false
@@ -71,7 +71,7 @@ const getlistaDadosPessoaisConversas = function(numero){
 
 }
 
-const getlistaDadosUsuarioContato = function(numero, nome){
+const getListaDadosUsuarioContato = function(numero, nome){
     let listaNumero = contatos["whats-users"];
     
     let resultado = false
@@ -109,12 +109,10 @@ const getFiltroPalavraChave = function(palavra, numero, nomeContato) {
                 // filtra pelo nome do contato
                 if (contato.name === nomeContato) {
 
-                    // msg.content texto da mensagem
+                    // mensagem.content texto da mensagem
                     // includes() verifica se contém a palavra
-                    const mensagensFiltradas = contato.messages.filter(function(msg) {
-                        return msg.content
-                            .toLowerCase()
-                            .includes(palavra.toLowerCase());
+                    const mensagensFiltradas = contato.messages.filter(function(mensagem) {
+                        return mensagem.content.toLowerCase().includes(palavra.toLowerCase());
                     });
 
                     // só adiciona se tiver resultado
@@ -142,4 +140,13 @@ const getFiltroPalavraChave = function(palavra, numero, nomeContato) {
 
 //console.log(getlistaDadosPessoaisConversas('11966578996'))
 
-console.log(getFiltroPalavraChave("o", "11987876567", "John Doe"))
+//console.log(getFiltroPalavraChave("o", "11987876567", "John Doe"))
+
+module.exports = {
+    getListaDeContatos,        
+    getListaDeContaUsuario,    
+    getlistaDadosPessoais: getListaDadosPessoais,
+    getlistaDadosPessoaisConversas: getListaDadosPessoaisConversas,
+    getlistaDadosUsuarioContato: getListaDadosUsuarioContato,
+    getFiltroPalavraChave
+}
