@@ -569,4 +569,4 @@ export const contatos = { "whats-users" :
   ]
 }
 
-module.exports = { contatos };
+import { contatos } from './modulo/contatos.js';

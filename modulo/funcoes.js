@@ -50,7 +50,7 @@ const getListaDadosPessoaisConversas = function(numero){
     return resultado
 };
 
-// CORRIGIDO: agora retorna array (o teste espera array)
+
 const getListaDadosUsuarioContato = function(numero, nome) {
     let listaNumero = contatos["whats-users"];
     let resultado = [];
