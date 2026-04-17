@@ -569,4 +569,3 @@ export const contatos = { "whats-users" :
   ]
 }
 
-export { contatos };
